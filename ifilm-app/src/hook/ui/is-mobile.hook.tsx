@@ -1,8 +1,9 @@
-import { useWindowSize } from './window-size.hook'
 import { useState } from 'react'
-import { useEvent } from './event.hook'
-import { mediaQueries, screenSizes } from '../../enums/screen-sizes.enum'
 import { useMediaQuery } from 'react-responsive'
+
+import { mediaQueries, screenSizes } from '../../enums/screen-sizes.enum'
+import { useEvent } from './event.hook'
+import { useWindowSize } from './window-size.hook'
 
 export const useIsMobile = () => {
   const { width } = useWindowSize()
