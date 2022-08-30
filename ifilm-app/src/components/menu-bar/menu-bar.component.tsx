@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { SearchIcon } from '../../assets/media/icons'
 import Dropdown from '../dropdown/dropdown.component'
 import SearchInput from '../search-input/search-input.component'
 import Styles from './menu-bar.styles'

@@ -10,20 +10,23 @@ const SearchInput = () => {
         className="Search-input__input"
         prefix={<SearchIcon className="Search-input__icon" />}
         suffix={
-          <div
-            style={{
-              borderLeft: '1px solid #ffa502'
-            }}
-          >
+          <>
+            <div
+              style={{
+                borderLeft: '1px solid #ffa502',
+                height: 25
+              }}
+            />
             <Button
               style={{
-                color: '#b3b3b3'
+                color: '#b3b3b3',
+                padding: 0
               }}
               type="text"
             >
               Search
             </Button>
-          </div>
+          </>
         }
       />
     </Styles>
