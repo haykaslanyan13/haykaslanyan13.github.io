@@ -1,11 +1,19 @@
-import React from 'react'
+import 'antd/dist/antd.min.css'
 
-import { useIsMobile } from './hook/ui/is-mobile.hook'
+import React from 'react'
+import { Helmet } from 'react-helmet'
+
+import Layout from './layouts/layout/layout.component'
 
 function App() {
-  const isMobile = useIsMobile()
-
-  return <div>{isMobile ? <div>mobile</div> : <div>desktop</div>}</div>
+  return (
+    <div>
+      <Helmet>
+        <style>{'body { background-color: #000000; margin: 0;}'}</style>
+      </Helmet>
+      <Layout />
+    </div>
+  )
 }
 
 export default App
