@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
-export default styled.div`
-  width: 40%;
+export default styled.div<any>`
+  .divider {
+    border-left: 1px solid #ffa502;
+    height: 25px;
+  }
   .Search-input {
     &__icon {
       height: 16px;
@@ -17,6 +20,11 @@ export default styled.div`
       &:hover {
         border: 2px solid #ffa502;
       }
+    }
+    &__button-text {
+      color: #6c757d;
+      padding: 0;
+      font-weight: bolder;
     }
   }
 `

@@ -1,4 +1,4 @@
-import MenuBar from '../../components/menu-bar/menu-bar.component'
+import MenuBar from '../../components/menu-bar/menu-bar-mobile.component'
 
 const MobileLayout = () => {
   return (
