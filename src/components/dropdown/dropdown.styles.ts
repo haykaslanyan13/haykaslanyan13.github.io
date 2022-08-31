@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export default styled.div`
-  font-family: 'Circular Std', Sans-serif;
-  font-weight: 600;
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  color: #6c757d;
 `

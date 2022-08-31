@@ -3,27 +3,20 @@ import { Button, Input } from 'antd'
 import { SearchIcon } from '../../assets/media/icons'
 import Styles from './search-input.styles'
 
-const SearchInput = () => {
+interface SearchInputProps {
+  className?: any
+}
+
+const SearchInput = ({ className }: SearchInputProps) => {
   return (
-    <Styles>
+    <Styles className={className}>
       <Input
         className="Search-input__input"
         prefix={<SearchIcon className="Search-input__icon" />}
         suffix={
           <>
-            <div
-              style={{
-                borderLeft: '1px solid #ffa502',
-                height: 25
-              }}
-            />
-            <Button
-              style={{
-                color: '#b3b3b3',
-                padding: 0
-              }}
-              type="text"
-            >
+            <div className="divider" />
+            <Button className="Search-input__button-text" type="text">
               Search
             </Button>
           </>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import Dropdown from '../dropdown/dropdown.component'
 import SearchInput from '../search-input/search-input.component'
+import Switch from '../switch/switch.component'
 import Styles from './menu-bar.styles'
 const MenuBar = () => {
   const [selectedLanguage, setSelectedLanguage] = useState({
@@ -21,17 +22,23 @@ const MenuBar = () => {
 
   return (
     <Styles>
-      <img
-        className="Menu_Bar__logo"
-        src={require('../../assets/media/ifilm-light-mode.png')}
-        alt={''}
-      />
-      <SearchInput />
-      <Dropdown
-        value={selectedLanguage}
-        options={options}
-        onSelect={setSelectedLanguage}
-      />
+      <div className="Menu_Bar__content">
+        <img
+          className="Menu_Bar__logo"
+          src={require('../../assets/media/ifilm-light-mode.png')}
+          alt={''}
+        />
+        <Dropdown
+          value={selectedLanguage}
+          options={options}
+          onSelect={setSelectedLanguage}
+        />
+        <SearchInput className="Menu_Bar__input" />
+      </div>
+      <div className="Menu_Bar__switch-container">
+        <Switch />
+        <span className="Menu_Bar__switch-label">Night mode</span>
+      </div>
     </Styles>
   )
 }
