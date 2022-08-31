@@ -1,11 +1,24 @@
 import { Switch } from 'antd'
+import { useState } from 'react'
 
 import Styles from './switch.styles'
 
-const SwitchComponent = () => {
+interface SwitchComponentProps {
+  checked?: boolean
+  onChange?: (value: boolean) => void
+}
+
+const SwitchComponent = ({ checked, onChange }: SwitchComponentProps) => {
+  const [value, setValue] = useState(checked || false)
   return (
     <Styles>
-      <Switch />
+      <Switch
+        checked={value}
+        onChange={(e) => {
+          setValue(e)
+          onChange && onChange(e)
+        }}
+      />
     </Styles>
   )
 }
