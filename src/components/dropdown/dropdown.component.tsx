@@ -9,13 +9,19 @@ interface DropdownProps {
   options: Array<DropdownOptionType>
   value?: DropdownOptionType
   onSelect?: (value: any) => void
+  className?: string
 }
 
-const DropdownComponent = ({ options, value, onSelect }: DropdownProps) => {
+const DropdownComponent = ({
+  options,
+  value,
+  onSelect,
+  className
+}: DropdownProps) => {
   const [selectedOption, setSelectedOption] = useState<any>(value || {})
 
   return (
-    <Styles>
+    <Styles className={className}>
       <Dropdown
         trigger={['click']}
         overlay={

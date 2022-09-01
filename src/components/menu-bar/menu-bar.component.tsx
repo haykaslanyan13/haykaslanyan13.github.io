@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
+import iFilmLogoNight from '../../assets/media/ifilm-dark-mode.png'
+import iFilmLogoLight from '../../assets/media/ifilm-light-mode.png'
 import { changeLanguage, changeMode } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
 import Dropdown from '../dropdown/dropdown.component'
@@ -9,10 +11,8 @@ import Styles from './menu-bar.styles'
 
 const MenuBar = () => {
   const dispatch = useDispatch()
-  // const language = useSelector((state: RootState) => state.settings.language)
-  const state = useSelector((state: RootState) => state.settings)
-  console.log(state)
-  const { language, mode } = state
+  const { language, mode } = useSelector((state: RootState) => state.settings)
+
   const options = [
     {
       key: 'en',
@@ -25,30 +25,33 @@ const MenuBar = () => {
   ]
 
   return (
-    <Styles>
-      <div className="Menu_Bar__content">
-        <img
-          className="Menu_Bar__logo"
-          src={require('../../assets/media/ifilm-light-mode.png')}
-          alt={''}
-        />
-        <Dropdown
-          value={language}
-          options={options}
-          onSelect={(value: any) => {
-            dispatch(changeLanguage(value))
-          }}
-        />
-        <SearchInput className="Menu_Bar__input" />
-      </div>
-      <div className="Menu_Bar__switch-container">
-        <Switch
-          checked={mode === 'night'}
-          onChange={(checked: boolean) => {
-            dispatch(changeMode(checked ? 'night' : 'light'))
-          }}
-        />
-        <span className="Menu_Bar__switch-label">Night mode</span>
+    <Styles $mode={mode}>
+      <div className="Menu_Bar__wrapper">
+        <div className="Menu_Bar__content">
+          <img
+            className="Menu_Bar__logo"
+            src={mode == 'light' ? iFilmLogoLight : iFilmLogoNight}
+            alt={''}
+          />
+          <Dropdown
+            className="Menu_Bar__dropdown"
+            value={language}
+            options={options}
+            onSelect={(value: any) => {
+              dispatch(changeLanguage(value))
+            }}
+          />
+          <SearchInput className="Menu_Bar__input" />
+        </div>
+        <div className="Menu_Bar__switch-container">
+          <Switch
+            checked={mode === 'night'}
+            onChange={(checked: boolean) => {
+              dispatch(changeMode(checked ? 'night' : 'light'))
+            }}
+          />
+          <span className="Menu_Bar__switch-label">Night mode</span>
+        </div>
       </div>
     </Styles>
   )
