@@ -23,7 +23,7 @@ export const usePopulars = ({ language, page = 1 }: IProps): UsePopulars => {
     stringifyURL('/movie/popular', params),
     getPopulars
   )
-  console.log(data)
+
   const isLoading = !data && !error
   const populars = data || []
 
