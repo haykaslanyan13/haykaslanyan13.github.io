@@ -1,5 +1,5 @@
-import Carousel from '../../components/carousel/carousel.component'
 import MenuBar from '../../components/menu-bar/menu-bar-mobile.component'
+import Carousel from '../../pages/Carousel/carousel.component'
 
 const MobileLayout = () => {
   return (
