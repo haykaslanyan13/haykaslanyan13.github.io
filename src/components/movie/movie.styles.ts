@@ -11,23 +11,28 @@ export default styled.div`
     align-items: center;
     width: 200px;
     &__image {
+      display: block;
       width: 100%;
       transition: transform 0.3s;
+      opacity: 1;
       &-container {
         overflow: hidden;
         position: relative;
+        &:hover .Movie__image {
+          opacity: 0.3;
+          transform: scale(1.4);
+        }
+        &:hover .Movie__image-description {
+          opacity: 0.2;
+        }
       }
       &-description {
         position: absolute;
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: red;
-        // opacity: 0.5;
-        z-index: -1;
-      }
-      &:hover {
-        transform: scale(1.4);
+        background-color: grey;
+        opacity: 0;
       }
     }
     &__title {
