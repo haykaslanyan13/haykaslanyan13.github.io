@@ -5,6 +5,8 @@ export default styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top: 25px;
+  margin-bottom: 35px;
   .MoviesView {
     &__movie-container {
       display: grid;

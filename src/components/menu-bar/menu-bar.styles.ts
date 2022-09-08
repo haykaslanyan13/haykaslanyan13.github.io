@@ -22,7 +22,7 @@ export default styled.div<any>`
       justify-content: space-evenly;
       width: 100%;
       height: 80px;
-      z-index: 1;
+      z-index: 500;
       background-color: ${({ $mode }) => ($mode == 'night' ? 'black' : '#fff')};
       transition: background-color 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);
     }

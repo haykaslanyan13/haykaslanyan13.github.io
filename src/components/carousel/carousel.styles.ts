@@ -14,9 +14,10 @@ export default styled.div<any>`
     height: 100%;
     padding: 20px;
     transform: translateX(${({ positionX }) => `${positionX}px`});
-    // transition: transform 0.5s cubic-bezier(0.41, -0.21, 0.36, 0.95) 0s;
     transition: transform 0.5s ease 0s;
     height: auto;
+    user-select: none;
+    cursor: pointer;
   }
   .Carousel {
     &__arrow {
