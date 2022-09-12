@@ -6,13 +6,12 @@ export default styled.div<any>`
   display: flex;
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);
-  z-index: 1;
   .Menu_Bar {
     &__wrapper {
       position: fixed;
       height: ${({ isOpen }) => (isOpen ? '170px' : '80px')};
       transition: all 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);
-      z-index: 1;
+      z-index: 500;
       top: 0;
       left: 0;
       right: 0;

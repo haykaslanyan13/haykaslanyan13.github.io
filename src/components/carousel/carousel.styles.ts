@@ -13,7 +13,11 @@ export default styled.div<any>`
     width: 100%;
     height: 100%;
     padding: 20px;
-    transform: translateX();
+    transform: translateX(${({ positionX }) => `${positionX}px`});
+    transition: transform 0.5s ease 0s;
+    height: auto;
+    user-select: none;
+    cursor: pointer;
   }
   .Carousel {
     &__arrow {
@@ -28,18 +32,26 @@ export default styled.div<any>`
       &-left {
         top: calc((100% - 50px) / 2);
         left: 0;
+        ${({ positionX }) =>
+          positionX == 0
+            ? 'opacity: 0.5; cursor: initial'
+            : 'opacity: 1; cursor: pointer'}
       }
       &-right {
         top: calc((100% - 50px) / 2);
         right: 0;
+        ${({ positionX, maxScroll }) =>
+          Math.abs(positionX) == maxScroll + 20
+            ? 'opacity: 0.5; cursor: initial'
+            : 'opacity: 1; cursor: pointer'}
       }
     }
     &__movie {
       height: 100%;
       > img {
-        height: 100%;
+        height: auto;
         width: calc((100vw - 250px) / 8) !important;
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           width: calc((100vw - 160px) / 5) !important;
         }
         @media (max-width: 720px) {
