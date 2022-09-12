@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export default styled.div<any>`
-  font-family: Montserrat, sans-serif;
   .ant-rate-star,
   .ant-rate-star-zero {
     margin: 0px !important;
@@ -10,7 +9,7 @@ export default styled.div<any>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 225px;
+    width: ${({ isMobile }) => (isMobile ? '150px' : '225px')};
     &__image {
       display: block;
       width: 100%;
@@ -86,7 +85,11 @@ export default styled.div<any>`
       text-align: center;
       width: 100%;
       font-weight: 800;
-      font-family: Montserrat, sans-serif;
+    }
+    &__rating {
+      font-size: ${({ isMobile }) => (isMobile ? '15px' : '21px')};
+      color: #fe7900;
+      color: #fe7900;
     }
   }
 `

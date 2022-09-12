@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export default styled.div<any>`
   height: ${({ isOpen }) => (isOpen ? '170px' : '80px')};
-  font-family: Montserrat, sans-serif;
   display: flex;
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);

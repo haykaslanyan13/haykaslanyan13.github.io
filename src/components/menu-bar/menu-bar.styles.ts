@@ -5,7 +5,6 @@ export default styled.div<any>`
   align-items: center;
   justify-content: space-evenly;
   height: 80px;
-  font-family: Montserrat, sans-serif;
   .Menu_Bar {
     &__content {
       display: flex;

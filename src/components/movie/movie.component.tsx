@@ -2,6 +2,7 @@ import { Rate } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useSelector } from 'react-redux'
 
+import { useIsMobile } from '../../hook/ui/is-mobile.hook'
 import { RootState } from '../../store/store'
 import Styles from './movie.styles'
 
@@ -13,9 +14,10 @@ interface MovieProps {
 }
 
 const Movie = ({ src, rating, title }: MovieProps) => {
+  const isMobile = useIsMobile()
   const { mode } = useSelector((state: RootState) => state.settings)
   return (
-    <Styles mode={mode}>
+    <Styles isMobile={isMobile} mode={mode}>
       <div className="Movie">
         <div className="Movie__image-container">
           <LazyLoadImage
