@@ -5,7 +5,7 @@ export const getPopulars = async (url: string) => {
   return response.data
 }
 
-export const getImage = async (url: string) => {
+export const getTopMovies = async (url: string) => {
   const response = await api.get(url)
   return response.data
 }

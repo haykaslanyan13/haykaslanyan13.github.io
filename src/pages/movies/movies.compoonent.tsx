@@ -4,13 +4,15 @@ import { useSelector } from 'react-redux'
 import Movie from '../../components/movie/movie.component'
 import DataPagination from '../../components/pagination/pagination.component'
 import { usePopulars } from '../../hook/api/populars.hook'
+import { useIsMobile } from '../../hook/ui/is-mobile.hook'
 import { usePagination } from '../../hook/ui/pagination.hook'
 import { RootState } from '../../store/store'
-import Styles from './movies.view.styles'
+import Styles from './movies.styles'
 
-const MoviesView = () => {
+const Movies = () => {
   const { page, onPage } = usePagination()
-  const { mode, language } = useSelector((state: RootState) => state.settings)
+  const isMobile = useIsMobile()
+  const { language } = useSelector((state: RootState) => state.settings)
   const FieldRef = useRef<any>(null)
   const { populars } = usePopulars({
     language: language.key,
@@ -33,7 +35,7 @@ const MoviesView = () => {
   }
 
   return (
-    <Styles ref={FieldRef}>
+    <Styles isMobile={isMobile} ref={FieldRef}>
       <DataPagination total={1000} perPage={20} onPage={onPage} page={page} />
       <div className="MoviesView__movie-container">
         {data?.results?.map((movie: any, key: number) => {
@@ -61,4 +63,4 @@ const MoviesView = () => {
   )
 }
 
-export default MoviesView
+export default Movies

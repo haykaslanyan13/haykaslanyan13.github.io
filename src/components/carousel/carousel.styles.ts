@@ -50,9 +50,9 @@ export default styled.div<any>`
       height: 100%;
       > img {
         height: auto;
-        width: calc((100vw - 250px) / 8) !important;
+        width: calc((100vw - 265px) / 8) !important;
         @media (max-width: 1200px) {
-          width: calc((100vw - 160px) / 5) !important;
+          width: calc((100vw - 175px) / 5) !important;
         }
         @media (max-width: 720px) {
           width: calc((100vw - 70px) / 2) !important;
