@@ -1,7 +1,7 @@
 import moment from 'moment'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 import Styles from './movie-card.styles'
-import {LazyLoadImage} from "react-lazy-load-image-component";
 
 interface MovieCard {
   movie: any

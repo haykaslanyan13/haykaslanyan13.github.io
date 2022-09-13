@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useDispatch, useSelector } from 'react-redux'
 
 import iFilmLogoNight from '../../assets/media/ifilm-dark-mode.png'
@@ -8,7 +9,6 @@ import Dropdown from '../dropdown/dropdown.component'
 import SearchInput from '../search-input/search-input.component'
 import Switch from '../switch/switch.component'
 import Styles from './menu-bar.styles'
-import {LazyLoadImage} from "react-lazy-load-image-component";
 
 const MenuBar = () => {
   const dispatch = useDispatch()
