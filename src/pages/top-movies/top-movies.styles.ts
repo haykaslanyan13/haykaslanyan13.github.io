@@ -6,7 +6,7 @@ export default styled.div<any>`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-top: 45px;
+    ${({ isMobile }) => !isMobile && 'margin-top: 45px'};
     &-title {
       font-size: 25px;
       color: ${({ mode }) => (mode == 'light' ? '#fe7900' : '#fff')};

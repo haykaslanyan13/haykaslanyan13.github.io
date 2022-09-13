@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
-export default styled.div`
+export default styled.div<any>`
   display: flex;
+  ${({ isMobile }) =>
+    isMobile && 'flex-direction: column;  align-items: center;'}
   width: 100%;
   justify-content: center;
   gap: 2rem;

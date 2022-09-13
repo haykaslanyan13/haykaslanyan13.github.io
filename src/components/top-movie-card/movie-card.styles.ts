@@ -3,7 +3,16 @@ import styled from 'styled-components'
 export default styled.div<any>`
   display: flex;
   flex-direction: column;
-  width: 20vw;
+  width: 350px;
+  @media (max-width: 1000px) {
+    width: 270px;
+  }
+  @media (max-width: 720px) {
+    width: 500px;
+  }
+  @media (max-width: 530px) {
+    width: 90vw;
+  }
   .ant-card-body {
     padding: 0px !important;
   }
@@ -31,7 +40,16 @@ export default styled.div<any>`
         border: none;
       }
       &__image {
-        width: 90px;
+        width: 84px;
+        @media (max-width: 1000px) {
+          width: 75px;
+        }
+        @media (max-width: 720px) {
+          width: 120px;
+        }
+        @media (max-width: 530px) {
+          width: 23vw;
+        }
       }
       &__content {
         display: flex;
