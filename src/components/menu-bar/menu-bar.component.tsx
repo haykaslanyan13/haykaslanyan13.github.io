@@ -8,6 +8,7 @@ import Dropdown from '../dropdown/dropdown.component'
 import SearchInput from '../search-input/search-input.component'
 import Switch from '../switch/switch.component'
 import Styles from './menu-bar.styles'
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 const MenuBar = () => {
   const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const MenuBar = () => {
     <Styles $mode={mode}>
       <div className="Menu_Bar__wrapper">
         <div className="Menu_Bar__content">
-          <img
+          <LazyLoadImage
             className="Menu_Bar__logo"
             src={mode == 'light' ? iFilmLogoLight : iFilmLogoNight}
             alt={''}

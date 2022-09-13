@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowLeftIcon, ArrowRightIcon } from '../../assets/media/icons'
 import { useDeviceDetect } from '../../hook/ui/device-detect.hook'
 import Styles from './carousel.styles'
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 interface CarouselProps {
   mode?: 'light' | 'night'
@@ -81,7 +82,7 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
         {data?.map((movie: Record<string, any>, index: number) => {
           return (
             <div className="Carousel__movie" key={index}>
-              <img
+              <LazyLoadImage
                 alt={''}
                 src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`}
               />

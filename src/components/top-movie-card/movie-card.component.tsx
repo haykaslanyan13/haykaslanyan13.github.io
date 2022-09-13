@@ -1,6 +1,7 @@
 import moment from 'moment'
 
 import Styles from './movie-card.styles'
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 interface MovieCard {
   movie: any
@@ -11,7 +12,7 @@ const MovieCard = ({ movie, mode = 'light' }: MovieCard) => {
   return (
     <Styles mode={mode}>
       <div className="TopMovie-card">
-        <img
+        <LazyLoadImage
           className="TopMovie-card__image"
           alt=""
           src={`${process.env.REACT_APP_IMAGE_BASE_URL}${movie.poster_path}`}
