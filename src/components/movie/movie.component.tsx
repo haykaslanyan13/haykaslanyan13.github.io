@@ -25,7 +25,6 @@ const Movie = ({ src, rating, title }: MovieProps) => {
             src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${src}`}
             className="Movie__image"
           />
-          {/*<div className="Movie__image-loading" />*/}
           <div className="Movie__image-description">
             <span className="Movie__image-description-title">{title}</span>
             <span className="Movie__image-description-item">Year: 2002</span>

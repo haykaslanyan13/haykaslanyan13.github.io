@@ -8,7 +8,6 @@ interface MovieCard {
 }
 
 const MovieCard = ({ movie, mode = 'light' }: MovieCard) => {
-  console.log(movie, 'movie')
   return (
     <Styles mode={mode}>
       <div className="TopMovie-card">

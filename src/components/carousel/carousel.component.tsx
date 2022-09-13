@@ -31,11 +31,11 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
     if (direction == 'left') {
       positionX + width - 10 > 0
         ? setPositionX(0)
-        : setPositionX(positionX + width - 10)
+        : setPositionX(positionX + width - 25)
     } else {
       positionX - width + 10 < -maxScroll
         ? setPositionX(-maxScroll - 20)
-        : setPositionX(positionX - width + 10)
+        : setPositionX(positionX - width + 25)
     }
   }
 
