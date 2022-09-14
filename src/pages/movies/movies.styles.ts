@@ -1,4 +1,9 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const mount = keyframes`
+    from {opacity: 0;}
+    to {opacity: 1;}
+`
 
 export default styled.div<any>`
   display: flex;
@@ -6,6 +11,8 @@ export default styled.div<any>`
   align-items: center;
   margin-top: 90px;
   margin-bottom: 35px;
+  animation: ${mount} 1s;
+  animation-iteration-count: 1;
   @media (max-width: 720px) {
     margin-top: 70px;
   }
