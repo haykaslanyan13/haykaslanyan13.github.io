@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import iFilmLogoNight from '../../assets/media/ifilm-dark-mode.png'
 import iFilmLogoLight from '../../assets/media/ifilm-light-mode.png'
+import { Routes } from '../../enums/routes.enum'
 import { changeLanguage, changeMode } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
 import MenuIcon from '../animated-menu-icon/animated-menu-icon.component'
@@ -12,6 +15,7 @@ import Switch from '../switch/switch.component'
 import Styles from './menu-bar-mobile.styles'
 
 const MenuBar = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { language, mode } = useSelector((state: RootState) => state.settings)
   const [isOpen, setIsOpen] = useState(false)
@@ -26,15 +30,20 @@ const MenuBar = () => {
     }
   ]
 
+  const navigateToHome = () => {
+    navigate(Routes.HOME)
+  }
+
   return (
     <Styles $mode={mode} isOpen={isOpen}>
       <div className="Menu_Bar__wrapper">
         <div className="Menu_Bar__container">
           <div className="Menu_Bar__content">
-            <img
+            <LazyLoadImage
               className="Menu_Bar__logo"
               src={mode == 'light' ? iFilmLogoLight : iFilmLogoNight}
               alt={''}
+              onClick={navigateToHome}
             />
             <Dropdown
               className="Menu_Bar__dropdown"

@@ -1,9 +1,12 @@
 import { Rate } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
+import { Routes } from '../../enums/routes.enum'
 import { useIsMobile } from '../../hook/ui/is-mobile.hook'
 import { RootState } from '../../store/store'
+import { getRoute } from '../../utils/route'
 import Styles from './movie.styles'
 
 interface MovieProps {
@@ -14,10 +17,25 @@ interface MovieProps {
 }
 
 const Movie = ({ src, rating, title }: MovieProps) => {
+  const navigate = useNavigate()
   const isMobile = useIsMobile()
   const { mode } = useSelector((state: RootState) => state.settings)
+
+  const navigateToView = () => {
+    navigate(
+      getRoute(Routes.MOVIE, {
+        id: 12
+      }),
+      {
+        state: {
+          src
+        }
+      }
+    )
+  }
+
   return (
-    <Styles isMobile={isMobile} mode={mode}>
+    <Styles onClick={navigateToView} isMobile={isMobile} mode={mode}>
       <div className="Movie">
         <div className="Movie__image-container">
           <LazyLoadImage
