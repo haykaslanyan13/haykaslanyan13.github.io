@@ -10,7 +10,7 @@ interface CarouselProps {
 }
 
 const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
-  const { width } = useDeviceDetect()
+  const { width, device } = useDeviceDetect()
   const [positionX, setPositionX] = useState(0)
   const [drag, setDrag] = useState(false)
   const innerRef = useRef<any>(null)
@@ -31,11 +31,11 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
     if (direction == 'left') {
       positionX + width - 10 > 0
         ? setPositionX(0)
-        : setPositionX(positionX + width - 25)
+        : setPositionX(positionX + width - (device == 'mobile' ? 10 : 25))
     } else {
       positionX - width + 10 < -maxScroll
         ? setPositionX(-maxScroll - 20)
-        : setPositionX(positionX - width + 25)
+        : setPositionX(positionX - width + (device == 'mobile' ? 10 : 25))
     }
   }
 
