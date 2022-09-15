@@ -1,11 +1,18 @@
 import styled from 'styled-components'
 
 export default styled.div<any>`
+  .mdc-linear-progress__buffer {
+    background-color: #fff !important;
+  }
+  .mdc-linear-progress__bar-inner {
+    background-color: #fe7900;
+  }
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   height: 80px;
   .Menu_Bar {
+    position: relative;
     &__content {
       display: flex;
       align-items: center;
@@ -35,6 +42,14 @@ export default styled.div<any>`
     }
     &__input {
       width: 25vw;
+    }
+    &__linear-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      // filter: invert(0%) sepia(82%) saturate(7500%) hue-rotate(266deg)
+      //   brightness(83%) contrast(117%);
+      color: black;
     }
     &__switch {
       &-container {

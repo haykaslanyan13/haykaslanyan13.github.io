@@ -46,6 +46,7 @@ const Movies = () => {
               src={movie.poster_path}
               key={key}
               title={movie.title}
+              movie={movie}
             />
           )
         })}
