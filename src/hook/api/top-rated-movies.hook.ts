@@ -1,6 +1,8 @@
+import { useDispatch } from 'react-redux'
 import useSWR from 'swr'
 
 import { getTopMovies } from '../../services/api/movies'
+import { changeLoadProcess } from '../../store/reducers/settingsSlice'
 import { stringifyURL } from '../../utils/query'
 
 interface UseTopMovies {
@@ -14,6 +16,7 @@ interface IProps {
 }
 
 export const useTopMovies = ({ language, page }: IProps): UseTopMovies => {
+  const dispatch = useDispatch()
   const params = {
     language,
     page
@@ -26,6 +29,7 @@ export const useTopMovies = ({ language, page }: IProps): UseTopMovies => {
 
   const topMovies = data || {}
   const isLoading = !data && !error
+  dispatch(changeLoadProcess(isLoading))
 
   return {
     topMovies,

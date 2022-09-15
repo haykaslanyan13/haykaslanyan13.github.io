@@ -1,3 +1,4 @@
+import LinearProgress from '@material/react-linear-progress'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -11,11 +12,12 @@ import Dropdown from '../dropdown/dropdown.component'
 import SearchInput from '../search-input/search-input.component'
 import Switch from '../switch/switch.component'
 import Styles from './menu-bar.styles'
-
 const MenuBar = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { language, mode } = useSelector((state: RootState) => state.settings)
+  const { language, mode, isLoading } = useSelector(
+    (state: RootState) => state.settings
+  )
 
   const options = [
     {
@@ -36,6 +38,13 @@ const MenuBar = () => {
     <Styles $mode={mode}>
       <div className="Menu_Bar__wrapper">
         <div className="Menu_Bar__content">
+          {isLoading && (
+            <LinearProgress
+              buffer={1}
+              progress={1}
+              className="Menu_Bar__linear-progress"
+            />
+          )}
           <LazyLoadImage
             className="Menu_Bar__logo"
             src={mode == 'light' ? iFilmLogoLight : iFilmLogoNight}

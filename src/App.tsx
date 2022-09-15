@@ -1,4 +1,5 @@
 import 'antd/dist/antd.min.css'
+import '@material/react-linear-progress/dist/linear-progress.css'
 
 import { Skeleton } from 'antd'
 import React, { useMemo } from 'react'

@@ -8,6 +8,7 @@ export interface SettingsState {
     key: string
     label: string
   }
+  isLoading: boolean
 }
 
 const initialState: SettingsState = withStorage({
@@ -15,7 +16,8 @@ const initialState: SettingsState = withStorage({
   language: {
     key: 'en',
     label: 'EN'
-  }
+  },
+  isLoading: false
 })
 
 export const settingsSlice = createSlice({
@@ -30,10 +32,14 @@ export const settingsSlice = createSlice({
     changeMode: (state, action) => {
       state.mode = action.payload
       populateLocalStorage({ mode: action.payload })
+    },
+    changeLoadProcess: (state, action) => {
+      state.isLoading = action.payload
     }
   }
 })
 
-export const { changeLanguage, changeMode } = settingsSlice.actions
+export const { changeLanguage, changeMode, changeLoadProcess } =
+  settingsSlice.actions
 
 export default settingsSlice.reducer

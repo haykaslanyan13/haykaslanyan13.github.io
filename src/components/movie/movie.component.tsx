@@ -14,21 +14,22 @@ interface MovieProps {
   rating: number
   title: string
   id: string | number
+  movie: Record<string | number, any>
 }
 
-const Movie = ({ src, rating, title }: MovieProps) => {
+const Movie = ({ src, rating, title, movie }: MovieProps) => {
   const navigate = useNavigate()
   const isMobile = useIsMobile()
   const { mode } = useSelector((state: RootState) => state.settings)
-
+  console.log(movie, 'movie')
   const navigateToView = () => {
     navigate(
       getRoute(Routes.MOVIE, {
-        id: 12
+        id: movie.id
       }),
       {
         state: {
-          src
+          id: movie.id
         }
       }
     )
