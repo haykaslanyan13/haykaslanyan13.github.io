@@ -3,31 +3,47 @@ import { useMemo } from 'react'
 
 import Styles from './decription.styles'
 
-const options = {
-  Title: 'title',
-  'Original name': 'original_title',
-  Year: 'release_date',
-  Genre: 'genre',
-  Duration: 'dur',
-  Budget: 'budget'
-}
+const optionsArray = [
+  'Title',
+  'Original name',
+  'Year',
+  'Genre',
+  'Duration',
+  'Budget'
+]
 
-const MovieDescription = ({ movie }: { movie: Record<string, any> }) => {
-  console.log(movie, 'movie')
-
-  const correctOption = useMemo(() => {
+const MovieDescription = ({
+  movie,
+  mode
+}: {
+  movie: Record<string, any>
+  mode: string
+}) => {
+  const options = useMemo(() => {
     const correctOptions: Record<string, any> = {}
     correctOptions.Title = movie.title
+    correctOptions['Original name'] = movie.original_title
     correctOptions.Year = moment(movie.release_date).format('YYYY')
-    // correctOptions.Genre = movie.genres.map((genre: Record<string, any>) => )
+    correctOptions.Genre = movie.genres
+      ?.map((genre: Record<string, any>) => genre.name)
+      ?.join()
+    correctOptions.Duration = `${movie.runtime}m.`
+    correctOptions.Budget = `${movie.budget}$`
 
     return correctOptions
-  }, [])
+  }, [movie])
+
   return (
-    <Styles>
-      {Object.keys(options).map((option, key) => {
-        return <div key={key}>dfdfd</div>
-      })}
+    <Styles mode={mode}>
+      <div className="MovieDescription">
+        {optionsArray.map((option, key) => {
+          return (
+            <div className="MovieDescription-item" key={key}>
+              {option}: <strong>{options[option]}</strong>
+            </div>
+          )
+        })}
+      </div>
     </Styles>
   )
 }

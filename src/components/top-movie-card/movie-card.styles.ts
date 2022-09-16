@@ -4,8 +4,11 @@ export default styled.div<any>`
   display: flex;
   flex-direction: column;
   width: 350px;
+  @media (max-width: 1200px) {
+    width: 310px;
+  }
   @media (max-width: 1000px) {
-    width: 270px;
+    width: 250px;
   }
   @media (max-width: 720px) {
     width: 500px;
@@ -74,6 +77,11 @@ export default styled.div<any>`
         border: 1px solid #fff;
         bottom: 5px;
         right: 5px;
+        @media (max-width: 1000px) {
+          width: 34px;
+          height: 34px;
+          border-radius: 17px;
+        }
         &__vote {
           color: #fff;
         }
