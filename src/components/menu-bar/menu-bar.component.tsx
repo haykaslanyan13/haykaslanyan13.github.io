@@ -8,6 +8,7 @@ import iFilmLogoLight from '../../assets/media/ifilm-light-mode.png'
 import { Routes } from '../../enums/routes.enum'
 import { changeLanguage, changeMode } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
+import { scrollToTop } from '../../utils/scroll'
 import Dropdown from '../dropdown/dropdown.component'
 import SearchInput from '../search-input/search-input.component'
 import Switch from '../switch/switch.component'
@@ -32,6 +33,7 @@ const MenuBar = () => {
 
   const navigateToHome = () => {
     navigate(Routes.HOME)
+    scrollToTop()
   }
 
   return (

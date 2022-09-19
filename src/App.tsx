@@ -1,7 +1,7 @@
 import 'antd/dist/antd.min.css'
 import '@material/react-linear-progress/dist/linear-progress.css'
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
-import { Skeleton } from 'antd'
 import React, { useMemo } from 'react'
 import { Suspense } from 'react'
 import { useSelector } from 'react-redux'

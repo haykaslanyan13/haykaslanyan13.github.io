@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
 export default styled.div<any>`
+  .mdc-linear-progress__buffer {
+    background-color: #fff !important;
+  }
+  .mdc-linear-progress__bar-inner {
+    background-color: #fe7900;
+  }
   height: ${({ isOpen }) => (isOpen ? '170px' : '80px')};
   display: flex;
   flex-direction: column;
@@ -32,6 +38,11 @@ export default styled.div<any>`
     }
     &__dropdown {
       ${({ $mode }) => $mode == 'night' && 'color: #fff;'}
+    }
+    &__linear-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
     }
     &__switch {
       &-container {
