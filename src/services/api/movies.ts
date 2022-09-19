@@ -19,3 +19,8 @@ export const getMovie = async (url: string) => {
   const response = await api.get(url)
   return response.data
 }
+
+export const getVideo = async (url: string) => {
+  const response = await api.get(url)
+  return response.data
+}

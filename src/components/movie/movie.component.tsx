@@ -7,6 +7,7 @@ import { Routes } from '../../enums/routes.enum'
 import { useIsMobile } from '../../hook/ui/is-mobile.hook'
 import { RootState } from '../../store/store'
 import { getRoute } from '../../utils/route'
+import { scrollToTop } from '../../utils/scroll'
 import Styles from './movie.styles'
 
 interface MovieProps {
@@ -33,6 +34,7 @@ const Movie = ({ src, rating, title, movie }: MovieProps) => {
         }
       }
     )
+    scrollToTop()
   }
 
   return (

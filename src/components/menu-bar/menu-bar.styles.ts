@@ -47,9 +47,6 @@ export default styled.div<any>`
       position: absolute;
       top: 0;
       left: 0;
-      // filter: invert(0%) sepia(82%) saturate(7500%) hue-rotate(266deg)
-      //   brightness(83%) contrast(117%);
-      color: black;
     }
     &__switch {
       &-container {
