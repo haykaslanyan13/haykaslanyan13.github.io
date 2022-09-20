@@ -1,18 +1,20 @@
 import { Rate } from 'antd'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 import MovieDescription from '../../components/movie-description-card/description.component'
 import { useVideo } from '../../hook/api/movie-video.hook'
 import { useMovie } from '../../hook/api/single-movie.hook'
 import { useIsMobile } from '../../hook/ui/is-mobile.hook'
+import { changeLoadProcess } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
 import Styles from './single-movie-view.styles'
 
 const SingleMovie = () => {
+  const dispatch = useDispatch()
   const isMobile = useIsMobile()
   const {
     state: { id }
@@ -21,14 +23,20 @@ const SingleMovie = () => {
     language: { key: language },
     mode
   } = useSelector((state: RootState) => state.settings)
-  const { movie } = useMovie({
+  const { movie, isLoading: isLoadingMovie } = useMovie({
     language,
     id
   })
-  const { video } = useVideo({
+  const { video, isLoading: isLoadingVideo } = useVideo({
     language,
     movieId: id
   })
+
+  useEffect(() => {
+    !isLoadingMovie && !isLoadingVideo
+      ? dispatch(changeLoadProcess(false))
+      : dispatch(changeLoadProcess(true))
+  }, [isLoadingMovie, isLoadingVideo])
 
   const src = useMemo(() => {
     return video?.results?.[video?.results?.length - 1]?.key

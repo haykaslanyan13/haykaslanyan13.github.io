@@ -6,11 +6,12 @@ import Styles from './movie-card.styles'
 interface MovieCard {
   movie: any
   mode?: 'light' | 'night'
+  onClick?: (event: any) => void
 }
 
-const MovieCard = ({ movie, mode = 'light' }: MovieCard) => {
+const MovieCard = ({ movie, mode = 'light', ...props }: MovieCard) => {
   return (
-    <Styles mode={mode}>
+    <Styles {...props} mode={mode}>
       <div className="TopMovie-card">
         <LazyLoadImage
           className="TopMovie-card__image"
