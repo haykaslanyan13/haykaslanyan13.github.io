@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Movie from '../../components/movie/movie.component'
 import DataPagination from '../../components/pagination/pagination.component'
 import { usePopulars } from '../../hook/api/populars.hook'
 import { useIsMobile } from '../../hook/ui/is-mobile.hook'
 import { usePagination } from '../../hook/ui/pagination.hook'
+import { changeLoadProcess } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
 import { scrollToTop } from '../../utils/scroll'
 import Styles from './movies.styles'
 
 const Movies = () => {
+  const dispatch = useDispatch()
   const { page, onPage } = usePagination()
   const isMobile = useIsMobile()
   const { language } = useSelector((state: RootState) => state.settings)
-  const { populars } = usePopulars({
+  const { populars, isLoading } = usePopulars({
     language: language.key,
     page
   })
@@ -23,6 +25,10 @@ const Movies = () => {
   useEffect(() => {
     Object.keys(populars).length && setData(populars)
   }, [populars])
+
+  useEffect(() => {
+    dispatch(changeLoadProcess(isLoading))
+  }, [isLoading])
 
   const scrollIntoView = () => {
     setTimeout(() => {

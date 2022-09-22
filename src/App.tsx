@@ -2,52 +2,46 @@ import 'antd/dist/antd.min.css'
 import '@material/react-linear-progress/dist/linear-progress.css'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
-import React, { useMemo } from 'react'
+import { Skeleton } from 'antd'
+import React from 'react'
 import { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
+import styled from 'styled-components'
 
 import { routes } from './config/routes.config'
 import { GlobalStyles } from './global.styles'
 import Layout from './layouts/layout/layout.component'
 import { RootState } from './store/store'
+
+const Styles = styled.div`
+  .suspense {
+    width: 40vw;
+    height: 100%;
+    margin-top: 90px;
+  }
+`
+
 function App() {
   const { mode } = useSelector((state: RootState) => state.settings)
 
-  const fallback = useMemo(() => {
-    return (
-      // <Skeleton
-      //   active
-      //   paragraph={{ rows: 20 }}
-      //   style={{
-      //     width: 750,
-      //     height: '100%',
-      //     marginTop: 90
-      //   }}
-      // />
-      <div />
-    )
-  }, [])
-
   return (
-    <>
+    <Styles>
       <GlobalStyles mode={mode} />
-      <Suspense fallback={fallback}>
-        <Routes>
-          {routes.map((R: any, key: number) => (
-            <Route
-              path={R.url}
-              element={
-                <Layout>
-                  <R.Component />
-                </Layout>
-              }
-              key={R.url + key}
-            />
-          ))}
-        </Routes>
-      </Suspense>
-    </>
+      <Layout>
+        <Suspense
+          fallback={
+            <Skeleton active paragraph={{ rows: 20 }} className="suspense" />
+          }
+        >
+          <Routes>
+            {routes.map((R: any, key: number) => (
+              <Route path={R.url} element={<R.Component />} key={R.url + key} />
+            ))}
+          </Routes>
+        </Suspense>
+      </Layout>
+    </Styles>
   )
 }
 

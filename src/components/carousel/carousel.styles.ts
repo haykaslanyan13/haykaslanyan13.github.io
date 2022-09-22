@@ -8,7 +8,6 @@ export default styled.div<any>`
   overflow: hidden;
   > div {
     display: flex;
-    align-items: center;
     gap: 30px;
     width: 100%;
     height: 100%;
@@ -48,7 +47,12 @@ export default styled.div<any>`
     }
     &__movie {
       height: 100%;
+      text-align: center;
+      &-title {
+        color: #fff;
+      }
       > img {
+        margin-bottom: 8px;
         height: auto;
         width: calc((100vw - 265px) / 8) !important;
         @media (max-width: 1200px) {
