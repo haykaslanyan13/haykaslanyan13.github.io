@@ -1,4 +1,5 @@
 import { Rate } from 'antd'
+import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -19,6 +20,7 @@ interface MovieProps {
 }
 
 const Movie = ({ src, rating, title, movie }: MovieProps) => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const isMobile = useIsMobile()
   const { mode } = useSelector((state: RootState) => state.settings)
@@ -48,12 +50,14 @@ const Movie = ({ src, rating, title, movie }: MovieProps) => {
           />
           <div className="Movie__image-description">
             <span className="Movie__image-description-title">{title}</span>
-            <span className="Movie__image-description-item">Year: 2002</span>
             <span className="Movie__image-description-item">
-              Total votes: 1456
+              {t('year')}: 2002
             </span>
             <span className="Movie__image-description-item">
-              Popularity: 8546
+              {t('total-votes')}: 1456
+            </span>
+            <span className="Movie__image-description-item">
+              {t('popularity')}: 8546
             </span>
             <div className="Movie__image-description-rating-container">
               <span className="Movie__image-description-rating Movie__image-description-rating-value">

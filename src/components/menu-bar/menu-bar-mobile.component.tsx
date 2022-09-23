@@ -1,5 +1,6 @@
 import LinearProgress from '@material/react-linear-progress'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -17,6 +18,7 @@ import Switch from '../switch/switch.component'
 import Styles from './menu-bar-mobile.styles'
 
 const MenuBar = () => {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { language, mode, isLoading } = useSelector(
@@ -63,6 +65,7 @@ const MenuBar = () => {
               options={options}
               onSelect={(value: any) => {
                 dispatch(changeLanguage(value))
+                i18n.changeLanguage(value.key)
               }}
             />
             <MenuIcon
@@ -82,7 +85,7 @@ const MenuBar = () => {
                   dispatch(changeMode(checked ? 'night' : 'light'))
                 }}
               />
-              <span className="Menu_Bar__switch-label">Night mode</span>
+              <span className="Menu_Bar__switch-label">{t('night-mode')}</span>
             </div>
           </div>
         </div>

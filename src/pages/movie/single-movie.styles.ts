@@ -88,10 +88,10 @@ export default styled.div<any>`
           font-size: 30px;
         }
         @media (max-width: 1000px) {
-          font-size: 20px;
+          font-size: 18px;
         }
-        @media (max-width: 850px) {
-          font-size: 13px;
+        @media (max-width: 830px) {
+          font-size: 9px;
         }
         @media (max-width: 720px) {
           font-size: 20px;

@@ -1,14 +1,26 @@
 import styled from 'styled-components'
 
 export default styled.div<any>`
+  width: 350px;
+  @media (max-width: 1200px) {
+    width: 310px;
+  }
+  @media (max-width: 1000px) {
+    width: 250px;
+  }
+  @media (max-width: 720px) {
+    width: 500px;
+  }
+  @media (max-width: 530px) {
+    width: 90vw;
+  }
   .TopMovies {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
     ${({ isMobile }) => !isMobile && 'margin-top: 45px'};
     &-title {
-      font-size: 25px;
+      font-size: 24px;
       color: ${({ mode }) => (mode == 'light' ? '#fe7900' : '#fff')};
       transition: all 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);
       font-weight: bold;

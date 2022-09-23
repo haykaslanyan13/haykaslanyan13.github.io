@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ import { scrollToTop } from '../../utils/scroll'
 import Styles from './cinema.styles'
 
 const Cinema = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const { mode, language } = useSelector((state: RootState) => state.settings)
   const {
@@ -34,7 +36,7 @@ const Cinema = () => {
 
   return (
     <Styles mode={mode}>
-      <strong className="Cinema__title">To The Cinema</strong>
+      <strong className="Cinema__title">{t('to-the-cinema')}</strong>
       {movies?.slice(0, 10)?.map((movie: any, key: number) => {
         return (
           <MovieCard

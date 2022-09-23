@@ -3,19 +3,7 @@ import styled from 'styled-components'
 export default styled.div<any>`
   display: flex;
   flex-direction: column;
-  width: 350px;
-  @media (max-width: 1200px) {
-    width: 310px;
-  }
-  @media (max-width: 1000px) {
-    width: 250px;
-  }
-  @media (max-width: 720px) {
-    width: 500px;
-  }
-  @media (max-width: 530px) {
-    width: 90vw;
-  }
+  width: 100%;
   .ant-card-body {
     padding: 0px !important;
   }

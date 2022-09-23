@@ -78,22 +78,33 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
         ref={innerRef}
         onMouseDown={(e) => {
           e.preventDefault()
-          setDrag(true)
+          if (device != 'mobile') {
+            e.preventDefault()
+            setDrag(true)
+          }
+        }}
+        onMouseUp={(event) => {
+          if (device != 'mobile') {
+            event.movementX == 0 && setDrag(false)
+          }
+        }}
+        onMouseMove={(e) => {
+          if (device != 'mobile' && drag) {
+            e.preventDefault()
+            handleClick(e.movementX > 0 ? 'left' : 'right')
+            setDrag(false)
+          }
         }}
         onTouchStart={(e) => {
           setDrag(true)
           setClientX(e.touches[0].clientX)
         }}
-        onTouchEnd={(e) => {
+        onTouchMove={(event) => {
           drag &&
+            event.changedTouches[0].clientX != clientX &&
             handleClick(
-              e.changedTouches[0].clientX > clientX ? 'left' : 'right'
+              event.changedTouches[0].clientX > clientX ? 'left' : 'right'
             )
-          setDrag(false)
-        }}
-        onMouseMove={(e) => {
-          e.preventDefault()
-          drag && handleClick(e.movementX > 0 ? 'left' : 'right')
           setDrag(false)
         }}
       >

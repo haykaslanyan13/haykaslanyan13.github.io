@@ -1,4 +1,5 @@
 import LinearProgress from '@material/react-linear-progress'
+import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -14,6 +15,7 @@ import SearchInput from '../search-input/search-input.component'
 import Switch from '../switch/switch.component'
 import Styles from './menu-bar.styles'
 const MenuBar = () => {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { language, mode, isLoading } = useSelector(
@@ -59,6 +61,7 @@ const MenuBar = () => {
             options={options}
             onSelect={(value: any) => {
               dispatch(changeLanguage(value))
+              i18n.changeLanguage(value.key)
             }}
           />
           <SearchInput className="Menu_Bar__input" />
@@ -70,7 +73,7 @@ const MenuBar = () => {
               dispatch(changeMode(checked ? 'night' : 'light'))
             }}
           />
-          <span className="Menu_Bar__switch-label">Night mode</span>
+          <span className="Menu_Bar__switch-label">{t('night-mode')}</span>
         </div>
       </div>
     </Styles>

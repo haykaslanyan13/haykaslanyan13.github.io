@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -11,14 +12,18 @@ import { changeLoadProcess } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
 import { getRoute } from '../../utils/route'
 import { scrollToTop } from '../../utils/scroll'
+import { populateLocalStorage } from '../../utils/storage'
 import Styles from './top-movies.styles'
 
 const TopMovies = () => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const isMobile = useIsMobile()
   const { language, mode } = useSelector((state: RootState) => state.settings)
-  const [randomPage, setRandomPage] = useState(Math.floor(Math.random() * 500))
+  const [randomPage, setRandomPage] = useState(
+    localStorage.getItem('randomPage') ?? Math.floor(Math.random() * 500)
+  )
   const { topMovies, isLoading } = useTopMovies({
     language: language.key,
     page: randomPage
@@ -28,6 +33,14 @@ const TopMovies = () => {
   useEffect(() => {
     Object.keys(topMovies)?.length && setMovies(topMovies.results)
   }, [topMovies])
+
+  useEffect(() => {
+    if (!localStorage.getItem('randomPage')) {
+      populateLocalStorage({
+        randomPage: randomPage
+      })
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(changeLoadProcess(isLoading))
@@ -50,10 +63,14 @@ const TopMovies = () => {
   return (
     <Styles isMobile={isMobile} mode={mode}>
       <div className="TopMovies">
-        <span className="TopMovies-title">Top Movies</span>
+        <span className="TopMovies-title">{t('top-movies')}</span>
         <RefreshIcon
           onClick={() => {
-            setRandomPage(Math.floor(Math.random() * 500))
+            const randomPage = Math.floor(Math.random() * 500)
+            setRandomPage(randomPage)
+            populateLocalStorage({
+              randomPage: randomPage
+            })
           }}
           className="TopMovies-refresh-icon"
         />

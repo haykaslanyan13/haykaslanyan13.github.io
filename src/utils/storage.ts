@@ -7,7 +7,7 @@ export const populateLocalStorage = (params: Record<string, any>) => {
 }
 
 export const populateReduxInitialState = () => {
-  const localLang = localStorage.getItem('localLang')
+  const localLang = localStorage.getItem('i18nextLng')
   const mode = localStorage.getItem('mode')
   return {
     mode,
@@ -21,8 +21,7 @@ export const populateReduxInitialState = () => {
 export const withStorage = (initialState: SettingsState): any => {
   if (!localStorage.length) {
     populateLocalStorage({
-      mode: 'light',
-      localLang: 'en'
+      mode: 'light'
     })
     return initialState
   }
