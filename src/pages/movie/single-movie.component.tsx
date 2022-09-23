@@ -1,5 +1,6 @@
 import { Rate } from 'antd'
 import { useEffect, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,9 +12,10 @@ import { useMovie } from '../../hook/api/single-movie.hook'
 import { useIsMobile } from '../../hook/ui/is-mobile.hook'
 import { changeLoadProcess } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
-import Styles from './single-movie-view.styles'
+import Styles from './single-movie.styles'
 
 const SingleMovie = () => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const isMobile = useIsMobile()
   const {
@@ -52,7 +54,7 @@ const SingleMovie = () => {
         <MovieDescription mode={mode} movie={movie} />
       </div>
       <div className="SingleMovie__about">
-        <div className="SingleMovie__about-header">About Film</div>
+        <div className="SingleMovie__about-header">{t('about-film')}</div>
         <span className="SingleMovie__about-overview">{movie.overview}</span>
       </div>
       <div className="SingleMovie__video-container">
@@ -61,10 +63,10 @@ const SingleMovie = () => {
             <>
               <div className="SingleMovie__video-description-container">
                 <span className="fs-20">
-                  Movie rating: <strong>{movie?.vote_average}</strong>
+                  {t('movie-rating')}: <strong>{movie?.vote_average}</strong>
                 </span>
                 <span className="fs-18">
-                  Total votes: <strong>{movie?.vote_count}</strong>
+                  {t('total-votes')}: <strong>{movie?.vote_count}</strong>
                 </span>
               </div>
               <Rate
@@ -86,10 +88,10 @@ const SingleMovie = () => {
               />
               <div className="SingleMovie__video-description-container">
                 <span className="fs-20">
-                  Movie rating: <strong>{movie?.vote_average}</strong>
+                  {t('movie-rating')}: <strong>{movie?.vote_average}</strong>
                 </span>
                 <span className="fs-18">
-                  Total votes: <strong>{movie?.vote_count}</strong>
+                  {t('total-votes')}: <strong>{movie?.vote_count}</strong>
                 </span>
               </div>
             </>

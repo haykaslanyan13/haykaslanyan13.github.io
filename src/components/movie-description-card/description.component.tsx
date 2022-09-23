@@ -1,15 +1,16 @@
 import moment from 'moment'
 import { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import Styles from './decription.styles'
 
 const optionsArray = [
-  'Title',
-  'Original name',
-  'Year',
-  'Genre',
-  'Duration',
-  'Budget'
+  'title',
+  'original-name',
+  'year',
+  'genre',
+  'duration',
+  'budget'
 ]
 
 const MovieDescription = ({
@@ -19,16 +20,17 @@ const MovieDescription = ({
   movie: Record<string, any>
   mode: string
 }) => {
+  const { t } = useTranslation()
   const options = useMemo(() => {
     const correctOptions: Record<string, any> = {}
-    correctOptions.Title = movie.title
-    correctOptions['Original name'] = movie.original_title
-    correctOptions.Year = moment(movie.release_date).format('YYYY')
-    correctOptions.Genre = movie.genres
+    correctOptions.title = movie.title
+    correctOptions['original-name'] = movie.original_title
+    correctOptions.year = moment(movie.release_date).format('YYYY')
+    correctOptions.genre = movie.genres
       ?.map((genre: Record<string, any>) => genre.name)
       ?.join()
-    correctOptions.Duration = `${movie.runtime}m.`
-    correctOptions.Budget = `${movie.budget}$`
+    correctOptions.duration = `${movie.runtime}m.`
+    correctOptions.budget = `${movie.budget}$`
 
     return correctOptions
   }, [movie])
@@ -39,7 +41,7 @@ const MovieDescription = ({
         {optionsArray.map((option, key) => {
           return (
             <div className="MovieDescription-item" key={key}>
-              {option}: <strong>{options[option]}</strong>
+              {t(`${option}`)}: <strong>{options[option]}</strong>
             </div>
           )
         })}

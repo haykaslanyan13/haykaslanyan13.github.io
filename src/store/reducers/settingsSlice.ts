@@ -27,7 +27,7 @@ export const settingsSlice = createSlice({
     changeLanguage: (state, action) => {
       state.language.key = action.payload.key
       state.language.label = action.payload.label
-      populateLocalStorage({ localLang: action.payload.key })
+      // populateLocalStorage({ i18nextLng: action.payload.key })
     },
     changeMode: (state, action) => {
       state.mode = action.payload

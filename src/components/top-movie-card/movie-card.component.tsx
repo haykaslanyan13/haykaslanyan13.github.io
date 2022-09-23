@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 import Styles from './movie-card.styles'
@@ -10,6 +11,7 @@ interface MovieCard {
 }
 
 const MovieCard = ({ movie, mode = 'light', ...props }: MovieCard) => {
+  const { t } = useTranslation()
   return (
     <Styles {...props} mode={mode}>
       <div className="TopMovie-card">
@@ -21,13 +23,13 @@ const MovieCard = ({ movie, mode = 'light', ...props }: MovieCard) => {
         <div className="TopMovie-card__content">
           <strong className="fw-800">{movie.title}</strong>
           <small className="grey">
-            Year:{' '}
+            {t('year')}:{' '}
             <strong className="fw-800 grey">
               {moment(movie.release_date).format('YYYY')}
             </strong>
           </small>
           <small className="grey">
-            Total Votes:{' '}
+            {t('total-votes')}:{' '}
             <strong className="fw-800 grey">{movie.vote_count}</strong>
           </small>
         </div>

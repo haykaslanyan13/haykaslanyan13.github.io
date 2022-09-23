@@ -16,7 +16,8 @@ import { RootState } from './store/store'
 
 const Styles = styled.div`
   .suspense {
-    width: 40vw;
+    margin-left: 20vw;
+    width: 60vw;
     height: 100%;
     margin-top: 90px;
   }
