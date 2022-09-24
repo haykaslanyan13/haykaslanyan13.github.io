@@ -20,7 +20,8 @@ export default styled.div<any>`
       top: 0;
       left: 0;
       right: 0;
-      background-color: ${({ $mode }) => ($mode == 'night' ? 'black' : '#fff')};
+      background-color: ${({ $mode }) =>
+        $mode == 'night' ? 'rgb(15,15,16)' : '#fff'};
     }
     &__container {
       margin-left: 25px;
