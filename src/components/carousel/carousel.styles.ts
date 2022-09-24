@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export default styled.div<any>`
   width: 100%;
-  background-color: ${({ $mode }) => ($mode == 'light' ? '#343a40' : 'black')};
+  background-color: ${({ $mode }) =>
+    $mode == 'light' ? '#343a40' : 'rgb(15,15,16)'};
   position: relative;
   transition: background-color 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);
   overflow: hidden;

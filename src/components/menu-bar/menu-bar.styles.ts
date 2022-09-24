@@ -29,7 +29,8 @@ export default styled.div<any>`
       width: 100%;
       height: 80px;
       z-index: 500;
-      background-color: ${({ $mode }) => ($mode == 'night' ? 'black' : '#fff')};
+      background-color: ${({ $mode }) =>
+        $mode == 'night' ? 'rgb(15,15,16)' : '#fff'};
       transition: background-color 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);
     }
     &__logo {
