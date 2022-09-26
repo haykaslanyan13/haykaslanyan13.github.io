@@ -16,6 +16,19 @@ const SearchInput = ({ className }: SearchInputProps) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const [searchText, setSearchText] = useState('')
+
+  const navigateTo = () => {
+    navigate(
+      getRoute(Routes.SEARCH, {
+        keyword: `keyword=${searchText}`
+      }),
+      {
+        state: {
+          searchText
+        }
+      }
+    )
+  }
   return (
     <Styles className={className}>
       <Input
@@ -24,16 +37,17 @@ const SearchInput = ({ className }: SearchInputProps) => {
         onChange={(event) => {
           setSearchText(event.target.value)
         }}
+        onKeyPress={(event) => {
+          if (event.key == 'Enter' && searchText) {
+            navigateTo()
+          }
+        }}
         suffix={
           <>
             <div className="divider" />
             <Button
               onClick={() => {
-                navigate(
-                  getRoute(Routes.SEARCH, {
-                    keyword: `keyword=${searchText}`
-                  })
-                )
+                searchText && navigateTo()
               }}
               className="Search-input__button-text"
               type="text"
