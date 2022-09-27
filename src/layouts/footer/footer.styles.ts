@@ -26,15 +26,15 @@ export default styled.div<any>`
         opacity: 0.75;
       }
       &-video {
-        width: 850px;
+        width: 750px;
         @media (max-width: 1200px) {
-          width: 800px;
+          width: 650px;
         }
         @media (max-width: 1000px) {
-          width: 700px;
+          width: 600px;
         }
         @media (max-width: 800px) {
-          width: 600px;
+          width: 500px;
         }
         @media (max-width: 720px) {
           width: 90%;

@@ -32,7 +32,7 @@ const Movies = () => {
 
   const scrollIntoView = () => {
     setTimeout(() => {
-      scrollToTop()
+      scrollToTop('auto')
     }, 500)
   }
 

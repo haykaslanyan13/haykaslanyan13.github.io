@@ -21,7 +21,10 @@ export const usePopulars = ({ language, page = 1 }: IProps): UsePopulars => {
 
   const { data, error } = useSWR(
     stringifyURL('/movie/popular', params),
-    getPopulars
+    getPopulars,
+    {
+      suspense: true
+    }
   )
 
   const isLoading = !data && !error

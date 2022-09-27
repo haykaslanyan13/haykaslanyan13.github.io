@@ -26,8 +26,8 @@ export default styled.div<any>`
       font-weight: bold;
     }
     &-refresh-icon {
-      width: 17px;
-      height: 17px;
+      width: 22px;
+      height: 22px;
       transition: all 0.4s cubic-bezier(0.41, -0.21, 0.41, 1.1);
       filter: ${({ mode }) =>
         mode == 'light'

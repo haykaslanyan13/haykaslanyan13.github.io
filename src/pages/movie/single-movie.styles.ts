@@ -6,6 +6,9 @@ const mount = keyframes`
 `
 
 export default styled.div<any>`
+  .ant-rate-star {
+    margin: 0px 5px 0px 0px !important;
+  }
   display: flex;
   flex-direction: column;
   width: 750px;
@@ -91,7 +94,7 @@ export default styled.div<any>`
           font-size: 18px;
         }
         @media (max-width: 830px) {
-          font-size: 9px;
+          font-size: 11px;
         }
         @media (max-width: 720px) {
           font-size: 20px;

@@ -20,15 +20,33 @@ export default styled.div<any>`
       width: 40vw !important;
     }
     &__image {
-      display: block;
+      display: ${({ isLoading }) => (isLoading ? 'none' : 'block')};
       width: 100%;
       transition: transform 0.3s;
       opacity: 1;
       &-loading {
-        display: block;
-        width: 100%;
-        background-color: black;
-        height: 400px;
+        display: ${({ isLoading }) => (isLoading ? 'flex' : 'none')};
+        justify-content: center;
+        align-items: center;
+        background-color: #f8f8f8;
+        width: 225px;
+        height: 337.5px;
+        @media (max-width: 1200px) {
+          width: 180px !important;
+          height: 270px !important;
+        }
+        @media (max-width: 1000px) {
+          width: 25vw !important;
+          height: 37vw !important;
+        }
+        @media (max-width: 720px) {
+          width: 40vw !important;
+          height: 68vw !important;
+        }
+        &-spinner {
+          filter: invert(50%) sepia(66%) saturate(2823%) hue-rotate(2deg)
+            brightness(103%) contrast(104%);
+        }
       }
       &-container {
         overflow: hidden;

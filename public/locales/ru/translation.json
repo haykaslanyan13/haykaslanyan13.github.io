@@ -12,5 +12,6 @@
   "budget": "Бюджет",
   "about-film": "Про фильм",
   "movie-rating": "Рейтинг фильма",
-  "to-the-cinema": "В кино"
+  "to-the-cinema": "В кино",
+  "movie-not-found": "Фильм с таким именем не найден"
 }
