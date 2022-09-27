@@ -1,4 +1,5 @@
 import { Rate } from 'antd'
+import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,6 +14,7 @@ interface IProps {
 }
 
 const Movie = ({ movie, mode }: IProps) => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   const navigateToView = (movie: Record<string, any>) => {
@@ -26,7 +28,7 @@ const Movie = ({ movie, mode }: IProps) => {
         }
       }
     )
-    scrollToTop()
+    scrollToTop('auto')
   }
 
   return (
@@ -55,11 +57,12 @@ const Movie = ({ movie, mode }: IProps) => {
             <Rate
               className="Movie__container-rating-stars"
               allowHalf
+              disabled
               value={movie.vote_average}
               count={10}
             />
             <div>
-              <span>Total votes: </span>
+              <span>{t('total-votes')}: </span>
               <strong>{movie.vote_count}</strong>
             </div>
           </div>

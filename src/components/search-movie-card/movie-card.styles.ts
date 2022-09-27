@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 
 export default styled.div<any>`
+  .ant-rate-star {
+    margin: 0px 3px 0px 0px !important;
+  }
+  .ant-rate-star-half,
+  .ant-rate-star-full {
+    color: #fe7900;
+  }
   display: flex;
   user-select: none;
   transition: all 0.2s ease-in-out;

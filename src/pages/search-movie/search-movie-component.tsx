@@ -1,5 +1,6 @@
 import { Skeleton } from 'antd'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
@@ -12,6 +13,7 @@ import { scrollToTop } from '../../utils/scroll'
 import Styles from './serach-movie.styles'
 
 const SearchMovie = () => {
+  const { t } = useTranslation()
   const {
     language: { key: language },
     mode
@@ -30,7 +32,7 @@ const SearchMovie = () => {
   useEffect(() => {
     if (Object.keys(movies)?.length) {
       setData(movies)
-      scrollToTop()
+      scrollToTop('auto')
     }
   }, [movies])
 
@@ -53,7 +55,7 @@ const SearchMovie = () => {
         ) : (
           <div className="Movies__not-found-container">
             <span className="Movies__not-found-text">
-              Movie with this name not found
+              {t('movie-not-found')}
             </span>
           </div>
         )

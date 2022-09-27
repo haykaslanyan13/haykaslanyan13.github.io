@@ -57,7 +57,7 @@ const TopMovies = () => {
         }
       }
     )
-    scrollToTop()
+    scrollToTop('auto')
   }
 
   return (

@@ -12,5 +12,6 @@
   "budget": "Budget",
   "about-film": "About Film",
   "movie-rating": "Movie rating",
-  "to-the-cinema": "To The Cinema"
+  "to-the-cinema": "To The Cinema",
+  "movie-not-found": "Movie with this name not found"
 }

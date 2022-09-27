@@ -31,7 +31,7 @@ const Cinema = () => {
         }
       }
     )
-    scrollToTop()
+    scrollToTop('auto')
   }
 
   return (

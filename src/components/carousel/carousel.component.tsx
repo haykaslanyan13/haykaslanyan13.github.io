@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '../../assets/media/icons'
 import { Routes } from '../../enums/routes.enum'
+import usePrevious from '../../hook/previous.hook'
 import { useDeviceDetect } from '../../hook/ui/device-detect.hook'
 import { getRoute } from '../../utils/route'
 import { scrollToTop } from '../../utils/scroll'
@@ -18,10 +19,11 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
   const { width, device } = useDeviceDetect()
   const [positionX, setPositionX] = useState(0)
   const [drag, setDrag] = useState(false)
-  const innerRef = useRef<any>(null)
   const [maxScroll, setMaxScroll] = useState(0)
   const [clientX, setClientX] = useState(0)
   const [windowSize, setWindowSize] = useState(width)
+  const innerRef = useRef<any>(null)
+  const prevWidth = usePrevious(width)
 
   const navigateToView = (movie: Record<string, any>) => {
     navigate(
@@ -34,7 +36,7 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
         }
       }
     )
-    scrollToTop()
+    scrollToTop('auto')
   }
 
   useEffect(() => {
@@ -57,6 +59,10 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
         : setPositionX(positionX - width + (device == 'mobile' ? 10 : 25))
     }
   }
+
+  useEffect(() => {
+    positionX != 0 && prevWidth && setPositionX(positionX + (prevWidth - width))
+  }, [width])
 
   useEffect(() => {
     if (innerRef.current) {

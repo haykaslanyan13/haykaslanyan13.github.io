@@ -35,7 +35,7 @@ const MenuBar = () => {
 
   const navigateToHome = () => {
     navigate(Routes.HOME)
-    scrollToTop()
+    scrollToTop('smooth')
   }
 
   return (
