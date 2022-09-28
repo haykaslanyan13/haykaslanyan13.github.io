@@ -41,6 +41,19 @@ export default styled.div<any>`
         @media (max-width: 530px) {
           width: 23vw;
         }
+        &-loading {
+          width: 84px;
+          height: 126px;
+          @media (max-width: 1000px) {
+            width: 75px;
+          }
+          @media (max-width: 720px) {
+            width: 120px;
+          }
+          @media (max-width: 530px) {
+            width: 23vw;
+          }
+        }
       }
       &__content {
         display: flex;

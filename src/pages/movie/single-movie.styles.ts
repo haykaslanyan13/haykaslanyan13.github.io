@@ -64,6 +64,30 @@ export default styled.div<any>`
           width: 50vw;
           height: auto;
         }
+        &-loading {
+          width: 215px;
+          height: 322.5px;
+          @media (max-width: 1200px) {
+            width: 185px;
+            height: 277.5px;
+          }
+          @media (max-width: 1000px) {
+            width: 150px;
+            height: 230px;
+          }
+          @media (max-width: 830px) {
+            width: 120px;
+            height: 190px;
+          }
+          @media (max-width: 720px) {
+            width: 300px;
+            height: 450px;
+          }
+          @media (max-width: 530px) {
+            width: 50vw;
+            height: 75vw;
+          }
+        }
       }
     }
     &__about {
