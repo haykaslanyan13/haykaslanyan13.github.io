@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export default styled.div<any>`
   .Image {
     display: ${({ isLoading }) => (isLoading ? 'none' : 'block')};
-    // width: 100%;
+    width: 100%;
     &-loading {
       display: ${({ isLoading, loaderClassName }) =>
         isLoading && loaderClassName ? 'flex !important' : 'none'};

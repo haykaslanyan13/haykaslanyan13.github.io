@@ -1,11 +1,11 @@
 import { Rate } from 'antd'
 import { useTranslation } from 'react-i18next'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useNavigate } from 'react-router-dom'
 
 import { Routes } from '../../enums/routes.enum'
 import { getRoute } from '../../utils/route'
 import { scrollToTop } from '../../utils/scroll'
+import Image from '../image/image.component'
 import Styles from './movie-card.styles'
 
 interface IProps {
@@ -38,10 +38,13 @@ const Movie = ({ movie, mode }: IProps) => {
       }}
       mode={mode}
     >
-      <LazyLoadImage
-        className="Movie__image"
-        alt=""
-        src={`${process.env.REACT_APP_IMAGE_BASE_URL}${movie.poster_path}`}
+      <Image
+        src={movie.poster_path}
+        imageClassName="Movie__image"
+        loaderWidth="45px"
+        loaderStrokeWidth="4"
+        loaderClassName="Movie__image-loading"
+        lazyLoad
       />
       <div className="Movie__container">
         <div className="Movie__container-description-container">

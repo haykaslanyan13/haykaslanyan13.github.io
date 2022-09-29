@@ -48,6 +48,7 @@ const SingleMovie = () => {
     <Styles isMobile={isMobile} mode={mode}>
       <div className="SingleMovie__header">
         <Image
+          lazyLoad
           src={movie.poster_path}
           loaderClassName={'SingleMovie__header-image-loading'}
           imageClassName={'SingleMovie__header-image'}

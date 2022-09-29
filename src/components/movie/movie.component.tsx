@@ -25,6 +25,7 @@ const Movie = ({ src, rating, title, movie }: MovieProps) => {
   const navigate = useNavigate()
   const isMobile = useIsMobile()
   const { mode } = useSelector((state: RootState) => state.settings)
+
   const navigateToView = () => {
     navigate(
       getRoute(Routes.MOVIE, {
@@ -44,9 +45,10 @@ const Movie = ({ src, rating, title, movie }: MovieProps) => {
       <div className="Movie">
         <div className="Movie__image-container">
           <Image
+            lazyLoad
             src={src}
-            loaderStrokeWidth={'4'}
-            loaderWidth={'80px'}
+            loaderStrokeWidth={'5'}
+            loaderWidth={'60px'}
             imageClassName={'Movie__image'}
             loaderClassName={'Movie__image-loading'}
           />

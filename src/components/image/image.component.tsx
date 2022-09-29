@@ -10,6 +10,7 @@ interface ImageProps {
   loaderClassName?: string
   loaderWidth: string
   loaderStrokeWidth: string
+  lazyLoad?: boolean
 }
 
 const Image = ({
@@ -17,19 +18,32 @@ const Image = ({
   imageClassName,
   loaderClassName,
   loaderWidth,
-  loaderStrokeWidth
+  loaderStrokeWidth,
+  lazyLoad
 }: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true)
+
   return (
     <Styles loaderClassName={loaderClassName} isLoading={isLoading}>
-      <LazyLoadImage
-        afterLoad={() => {
-          setIsLoading(false)
-        }}
-        alt=""
-        src={`${process.env.REACT_APP_IMAGE_BASE_URL}${src}`}
-        className={`Image ${imageClassName}`}
-      />
+      {lazyLoad ? (
+        <LazyLoadImage
+          afterLoad={() => {
+            setIsLoading(false)
+          }}
+          alt=""
+          src={`${process.env.REACT_APP_IMAGE_BASE_URL}${src}`}
+          className={`Image ${imageClassName}`}
+        />
+      ) : (
+        <img
+          onLoad={() => {
+            setIsLoading(false)
+          }}
+          alt=""
+          src={`${process.env.REACT_APP_IMAGE_BASE_URL}${src}`}
+          className={`Image ${imageClassName}`}
+        />
+      )}
       <div className={`Image-loading ${loaderClassName}`}>
         <RotatingLines
           strokeWidth={loaderStrokeWidth}

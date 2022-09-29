@@ -16,6 +16,7 @@ const MovieCard = ({ movie, mode = 'light', ...props }: MovieCard) => {
     <Styles {...props} mode={mode}>
       <div className="TopMovie-card">
         <Image
+          lazyLoad
           loaderWidth={'40px'}
           loaderStrokeWidth={'4'}
           src={movie.poster_path}

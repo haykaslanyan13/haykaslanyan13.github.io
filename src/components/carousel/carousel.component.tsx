@@ -7,6 +7,7 @@ import usePrevious from '../../hook/previous.hook'
 import { useDeviceDetect } from '../../hook/ui/device-detect.hook'
 import { getRoute } from '../../utils/route'
 import { scrollToTop } from '../../utils/scroll'
+import Image from '../image/image.component'
 import Styles from './carousel.styles'
 
 interface CarouselProps {
@@ -123,9 +124,13 @@ const Carousel = ({ data, mode = 'light' }: CarouselProps) => {
               className="Carousel__movie"
               key={index}
             >
-              <img
-                alt={''}
-                src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`}
+              <Image
+                key={index}
+                loaderWidth={'50px'}
+                loaderStrokeWidth={'5'}
+                src={movie.poster_path}
+                imageClassName="Carousel__movie-image"
+                loaderClassName="Carousel__movie-image-loading"
               />
               <strong className="Carousel__movie-title">{movie.title}</strong>
             </div>
