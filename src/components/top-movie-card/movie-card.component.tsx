@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 
+import Image from '../image/image.component'
 import Styles from './movie-card.styles'
 
 interface MovieCard {
@@ -15,10 +15,13 @@ const MovieCard = ({ movie, mode = 'light', ...props }: MovieCard) => {
   return (
     <Styles {...props} mode={mode}>
       <div className="TopMovie-card">
-        <LazyLoadImage
-          className="TopMovie-card__image"
-          alt=""
-          src={`${process.env.REACT_APP_IMAGE_BASE_URL}${movie.poster_path}`}
+        <Image
+          lazyLoad
+          loaderWidth={'40px'}
+          loaderStrokeWidth={'4'}
+          src={movie.poster_path}
+          imageClassName={'TopMovie-card__image'}
+          loaderClassName={'TopMovie-card__image-loading'}
         />
         <div className="TopMovie-card__content">
           <strong className="fw-800">{movie.title}</strong>

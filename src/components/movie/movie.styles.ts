@@ -20,15 +20,10 @@ export default styled.div<any>`
       width: 40vw !important;
     }
     &__image {
-      display: ${({ isLoading }) => (isLoading ? 'none' : 'block')};
       width: 100%;
       transition: transform 0.3s;
       opacity: 1;
       &-loading {
-        display: ${({ isLoading }) => (isLoading ? 'flex' : 'none')};
-        justify-content: center;
-        align-items: center;
-        background-color: #f8f8f8;
         width: 225px;
         height: 337.5px;
         @media (max-width: 1200px) {
@@ -52,6 +47,10 @@ export default styled.div<any>`
         overflow: hidden;
         position: relative;
         &:hover .Movie__image {
+          background-color: rgba(100, 100, 100, 0.5);
+          transform: scale(1.4);
+        }
+        &:hover .Movie__image-loading {
           background-color: rgba(100, 100, 100, 0.5);
           transform: scale(1.4);
         }

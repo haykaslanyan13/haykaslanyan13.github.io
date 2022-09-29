@@ -1,11 +1,11 @@
 import { Rate } from 'antd'
 import { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
+import Image from '../../components/image/image.component'
 import MovieDescription from '../../components/movie-description-card/description.component'
 import { useVideo } from '../../hook/api/movie-video.hook'
 import { useMovie } from '../../hook/api/single-movie.hook'
@@ -47,9 +47,13 @@ const SingleMovie = () => {
   return (
     <Styles isMobile={isMobile} mode={mode}>
       <div className="SingleMovie__header">
-        <LazyLoadImage
-          src={`${process.env.REACT_APP_IMAGE_BASE_URL}${movie.poster_path}`}
-          className="SingleMovie__header-image"
+        <Image
+          lazyLoad
+          src={movie.poster_path}
+          loaderClassName={'SingleMovie__header-image-loading'}
+          imageClassName={'SingleMovie__header-image'}
+          loaderWidth={'70px'}
+          loaderStrokeWidth={'4'}
         />
         <MovieDescription mode={mode} movie={movie} />
       </div>

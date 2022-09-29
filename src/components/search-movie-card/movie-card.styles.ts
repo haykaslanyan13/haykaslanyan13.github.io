@@ -122,6 +122,22 @@ export default styled.div<any>`
       @media (max-width: 720px) {
         width: 20vw;
       }
+      &-loading {
+        width: 140px;
+        height: 210px;
+        @media (max-width: 1100px) {
+          width: 120px;
+          height: 188.2px;
+        }
+        @media (max-width: 950px) {
+          width: 90px;
+          height: 149.13px;
+        }
+        @media (max-width: 720px) {
+          width: 20vw;
+          height: 30vw;
+        }
+      }
     }
   }
 `

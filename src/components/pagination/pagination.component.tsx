@@ -1,4 +1,8 @@
 import { Pagination, PaginationProps } from 'antd'
+import { useSelector } from 'react-redux'
+
+import { RootState } from '../../store/store'
+import Styles from './pagination.styles'
 
 interface DataPaginationProps extends PaginationProps {
   page: number
@@ -13,15 +17,19 @@ const DataPagination = ({
   total,
   perPage
 }: DataPaginationProps) => {
+  const { mode } = useSelector((state: RootState) => state.settings)
+
   return (
-    <Pagination
-      current={page}
-      showSizeChanger={false}
-      onChange={onPage}
-      showLessItems
-      total={total}
-      pageSize={perPage || 10}
-    />
+    <Styles mode={mode}>
+      <Pagination
+        current={page}
+        showSizeChanger={false}
+        onChange={onPage}
+        showLessItems
+        total={total}
+        pageSize={perPage || 10}
+      />
+    </Styles>
   )
 }
 

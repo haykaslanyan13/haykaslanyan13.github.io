@@ -52,7 +52,7 @@ export default styled.div<any>`
       &-title {
         color: #fff;
       }
-      > img {
+      &-image {
         margin-bottom: 8px;
         height: auto;
         width: calc((100vw - 265px) / 8) !important;
@@ -61,6 +61,19 @@ export default styled.div<any>`
         }
         @media (max-width: 720px) {
           width: calc((100vw - 70px) / 2) !important;
+        }
+        &-loading {
+          margin-bottom: 8px;
+          height: 16vw !important;
+          width: calc((100vw - 265px) / 8) !important;
+          @media (max-width: 1200px) {
+            width: calc((100vw - 175px) / 5) !important;
+            height: 25.3vw !important;
+          }
+          @media (max-width: 720px) {
+            width: calc((100vw - 70px) / 2) !important;
+            height: 67.3vw !important;
+          }
         }
       }
     }
