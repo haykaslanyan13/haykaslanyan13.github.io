@@ -1,15 +1,14 @@
-import { useState } from 'react'
+import { ImgHTMLAttributes, useMemo, useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { RotatingLines } from 'react-loader-spinner'
 
 import Styles from './image.styles'
 
-interface ImageProps {
-  src: string
+interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   imageClassName: string
   loaderClassName?: string
-  loaderWidth: string
-  loaderStrokeWidth: string
+  loaderWidth?: string
+  loaderStrokeWidth?: string
   lazyLoad?: boolean
 }
 
@@ -19,19 +18,30 @@ const Image = ({
   loaderClassName,
   loaderWidth,
   loaderStrokeWidth,
-  lazyLoad
+  lazyLoad,
+  onClick
 }: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true)
 
+  const currentSrc = useMemo(() => {
+    return src?.lastIndexOf('/') == 0
+      ? `${process.env.REACT_APP_IMAGE_BASE_URL}${src}`
+      : src
+  }, [src])
+
   return (
-    <Styles loaderClassName={loaderClassName} isLoading={isLoading}>
+    <Styles
+      onClick={onClick}
+      loaderClassName={loaderClassName}
+      isLoading={isLoading}
+    >
       {lazyLoad ? (
         <LazyLoadImage
           afterLoad={() => {
             setIsLoading(false)
           }}
           alt=""
-          src={`${process.env.REACT_APP_IMAGE_BASE_URL}${src}`}
+          src={currentSrc}
           className={`Image ${imageClassName}`}
         />
       ) : (
@@ -40,7 +50,7 @@ const Image = ({
             setIsLoading(false)
           }}
           alt=""
-          src={`${process.env.REACT_APP_IMAGE_BASE_URL}${src}`}
+          src={currentSrc}
           className={`Image ${imageClassName}`}
         />
       )}
