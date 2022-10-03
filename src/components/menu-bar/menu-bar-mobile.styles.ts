@@ -27,15 +27,24 @@ export default styled.div<any>`
       margin-left: 25px;
       margin-right: 25px;
       margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
     &__content {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
+      width: 100%;
+    }
+    &__input {
+      width: 73vw;
     }
     &__logo {
       width: 120px;
       height: 40px;
+      cursor: pointer;
     }
     &__dropdown {
       ${({ $mode }) => $mode == 'night' && 'color: #fff;'}

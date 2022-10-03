@@ -1,7 +1,6 @@
 import LinearProgress from '@material/react-linear-progress'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,9 +9,11 @@ import iFilmLogoLight from '../../assets/media/ifilm-light-mode.png'
 import { Routes } from '../../enums/routes.enum'
 import { changeLanguage, changeMode } from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
+import { getRoute } from '../../utils/route'
 import { scrollToTop } from '../../utils/scroll'
 import MenuIcon from '../animated-menu-icon/animated-menu-icon.component'
 import Dropdown from '../dropdown/dropdown.component'
+import Image from '../image/image.component'
 import SearchInput from '../search-input/search-input.component'
 import Switch from '../switch/switch.component'
 import Styles from './menu-bar-mobile.styles'
@@ -25,6 +26,7 @@ const MenuBar = () => {
     (state: RootState) => state.settings
   )
   const [isOpen, setIsOpen] = useState(false)
+  const [searchText, setSearchText] = useState('')
   const options = [
     {
       key: 'en',
@@ -41,6 +43,19 @@ const MenuBar = () => {
     scrollToTop('smooth')
   }
 
+  const navigateToSearchedMovies = (searchText: string) => {
+    navigate(
+      getRoute(Routes.SEARCH, {
+        keyword: `keyword=${searchText}`
+      }),
+      {
+        state: {
+          searchText
+        }
+      }
+    )
+  }
+
   return (
     <Styles $mode={mode} isOpen={isOpen}>
       <div className="Menu_Bar__wrapper">
@@ -53,10 +68,9 @@ const MenuBar = () => {
                 className="Menu_Bar__linear-progress"
               />
             )}
-            <LazyLoadImage
-              className="Menu_Bar__logo"
+            <Image
               src={mode == 'light' ? iFilmLogoLight : iFilmLogoNight}
-              alt={''}
+              imageClassName={'Menu_Bar__logo'}
               onClick={navigateToHome}
             />
             <Dropdown
@@ -77,7 +91,21 @@ const MenuBar = () => {
             />
           </div>
           <div className="Menu_Bar__search-content">
-            <SearchInput className="Menu_Bar__input" />
+            <SearchInput
+              onChange={(event) => {
+                setSearchText(event.target.value)
+              }}
+              value={searchText}
+              onKeyPress={(event) => {
+                if (event.key == 'Enter' && searchText) {
+                  navigateToSearchedMovies(searchText)
+                }
+              }}
+              onButtonClick={() => {
+                searchText && navigateToSearchedMovies(searchText)
+              }}
+              className="Menu_Bar__input"
+            />
             <div className="Menu_Bar__switch-container">
               <Switch
                 checked={mode === 'night'}
