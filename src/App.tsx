@@ -12,6 +12,7 @@ import styled from 'styled-components'
 import { routes } from './config/routes.config'
 import { GlobalStyles } from './global.styles'
 import Layout from './layouts/layout/layout.component'
+import PageNotFound from './pages/page-not-found/page-not-found.component'
 import { RootState } from './store/store'
 
 const Styles = styled.div`
@@ -39,6 +40,7 @@ function App() {
             {routes.map((R: any, key: number) => (
               <Route path={R.url} element={<R.Component />} key={R.url + key} />
             ))}
+            <Route path={'*'} element={<PageNotFound />} />
           </Routes>
         </Suspense>
       </Layout>

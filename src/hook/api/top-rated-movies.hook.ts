@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { getTopMovies } from '../../services/api/movies'
+import { getData } from '../../services/api/movies'
 import { stringifyURL } from '../../utils/query'
 
 interface UseTopMovies {
@@ -21,7 +21,7 @@ export const useTopMovies = ({ language, page }: IProps): UseTopMovies => {
 
   const { data, error } = useSWR(
     stringifyURL('/movie/top_rated', params),
-    getTopMovies
+    getData
   )
 
   const topMovies = data || {}

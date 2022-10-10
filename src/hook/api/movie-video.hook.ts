@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { getVideo } from '../../services/api/movies'
+import { getData } from '../../services/api/movies'
 import { stringifyURL } from '../../utils/query'
 
 interface UseVideo {
@@ -20,7 +20,7 @@ export const useVideo = ({ language, movieId }: IProps): UseVideo => {
 
   const { data, error } = useSWR(
     stringifyURL(`/movie/${movieId}/videos`, params),
-    getVideo
+    getData
   )
 
   const video = data || {}

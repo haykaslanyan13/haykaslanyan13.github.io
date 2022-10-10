@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { getMovies } from '../../services/api/movies'
+import { getData } from '../../services/api/movies'
 import { stringifyURL } from '../../utils/query'
 
 interface UseNowPlaying {
@@ -24,7 +24,7 @@ export const useNowPlaying = ({
 
   const { data, error } = useSWR(
     stringifyURL('/movie/now_playing', params),
-    getMovies
+    getData
   )
 
   const nowPlayingMovies = data || {}

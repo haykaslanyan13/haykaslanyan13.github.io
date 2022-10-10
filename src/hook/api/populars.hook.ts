@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { getPopulars } from '../../services/api/movies'
+import { getData } from '../../services/api/movies'
 import { stringifyURL } from '../../utils/query'
 
 interface UsePopulars {
@@ -21,7 +21,7 @@ export const usePopulars = ({ language, page = 1 }: IProps): UsePopulars => {
 
   const { data, error } = useSWR(
     stringifyURL('/movie/popular', params),
-    getPopulars
+    getData
   )
 
   const isLoading = !data && !error
