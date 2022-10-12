@@ -1,5 +1,6 @@
 {
   "name": "ifilm-app",
+  "homepage": "http://haykaslanyan13.github.io/ifilm__REACT",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -42,6 +43,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "prettier": "npx prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "eslint": "npx eslint './**/*.{js,jsx,ts,tsx}' --config ./.eslintrc.js --max-warnings=0",
     "prettier-windows": "npx prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
@@ -77,6 +80,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.3.2"
   }
 }
