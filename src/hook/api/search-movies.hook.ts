@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { getMovies } from '../../services/api/movies'
+import { getData } from '../../services/api/movies'
 import { stringifyURL } from '../../utils/query'
 
 interface IProps {
@@ -26,10 +26,7 @@ export const useSearchMovies = ({
     include_adult: true
   }
 
-  const { data, error } = useSWR(
-    stringifyURL('/search/movie', params),
-    getMovies
-  )
+  const { data, error } = useSWR(stringifyURL('/search/movie', params), getData)
 
   const movies = data || {}
   const isLoading = !data && !error

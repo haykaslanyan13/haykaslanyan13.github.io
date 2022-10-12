@@ -9,6 +9,7 @@ export interface SettingsState {
     label: string
   }
   isLoading: boolean
+  randomPage: number
 }
 
 const initialState: SettingsState = withStorage({
@@ -17,6 +18,7 @@ const initialState: SettingsState = withStorage({
     key: 'en',
     label: 'EN'
   },
+  randomPage: Math.floor(Math.random() * 500),
   isLoading: false
 })
 
@@ -27,7 +29,6 @@ export const settingsSlice = createSlice({
     changeLanguage: (state, action) => {
       state.language.key = action.payload.key
       state.language.label = action.payload.label
-      // populateLocalStorage({ i18nextLng: action.payload.key })
     },
     changeMode: (state, action) => {
       state.mode = action.payload
@@ -35,11 +36,18 @@ export const settingsSlice = createSlice({
     },
     changeLoadProcess: (state, action) => {
       state.isLoading = action.payload
+    },
+    changeRandomPage: (state) => {
+      state.randomPage = Math.floor(Math.random() * 500)
     }
   }
 })
 
-export const { changeLanguage, changeMode, changeLoadProcess } =
-  settingsSlice.actions
+export const {
+  changeLanguage,
+  changeMode,
+  changeLoadProcess,
+  changeRandomPage
+} = settingsSlice.actions
 
 export default settingsSlice.reducer

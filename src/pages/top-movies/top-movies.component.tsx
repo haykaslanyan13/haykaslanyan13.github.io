@@ -8,11 +8,13 @@ import MovieCard from '../../components/top-movie-card/movie-card.component'
 import { Routes } from '../../enums/routes.enum'
 import { useTopMovies } from '../../hook/api/top-rated-movies.hook'
 import { useIsMobile } from '../../hook/ui/is-mobile.hook'
-import { changeLoadProcess } from '../../store/reducers/settingsSlice'
+import {
+  changeLoadProcess,
+  changeRandomPage
+} from '../../store/reducers/settingsSlice'
 import { RootState } from '../../store/store'
 import { getRoute } from '../../utils/route'
 import { scrollToTop } from '../../utils/scroll'
-import { populateLocalStorage } from '../../utils/storage'
 import Styles from './top-movies.styles'
 
 const TopMovies = () => {
@@ -21,9 +23,7 @@ const TopMovies = () => {
   const navigate = useNavigate()
   const isMobile = useIsMobile()
   const { language, mode } = useSelector((state: RootState) => state.settings)
-  const [randomPage, setRandomPage] = useState(
-    localStorage.getItem('randomPage') ?? Math.floor(Math.random() * 500)
-  )
+  const { randomPage } = useSelector((state: RootState) => state.settings)
   const { topMovies, isLoading } = useTopMovies({
     language: language.key,
     page: randomPage
@@ -33,14 +33,6 @@ const TopMovies = () => {
   useEffect(() => {
     Object.keys(topMovies)?.length && setMovies(topMovies.results)
   }, [topMovies])
-
-  useEffect(() => {
-    if (!localStorage.getItem('randomPage')) {
-      populateLocalStorage({
-        randomPage: randomPage
-      })
-    }
-  }, [])
 
   useEffect(() => {
     dispatch(changeLoadProcess(isLoading))
@@ -66,11 +58,7 @@ const TopMovies = () => {
         <span className="TopMovies-title">{t('top-movies')}</span>
         <RefreshIcon
           onClick={() => {
-            const randomPage = Math.floor(Math.random() * 500)
-            setRandomPage(randomPage)
-            populateLocalStorage({
-              randomPage: randomPage
-            })
+            dispatch(changeRandomPage())
           }}
           className="TopMovies-refresh-icon"
         />
