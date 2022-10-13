@@ -78,7 +78,15 @@ export default styled.div<any>`
           color: white;
           font-weight: 800;
           padding-bottom: 5px;
-          font-size: 20px;
+          font-size: 18px;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          @media (max-width: 550px) {
+            -webkit-line-clamp: 1 !important;
+          }
         }
         &-rating {
           background-color: #fe7900;
