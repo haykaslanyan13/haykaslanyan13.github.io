@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { Routes } from '../../enums/routes.enum'
-import { useIsMobile } from '../../hook/ui/is-mobile.hook'
 import { RootState } from '../../store/store'
 import { getRoute } from '../../utils/route'
 import { scrollToTop } from '../../utils/scroll'
@@ -23,7 +22,6 @@ interface MovieProps {
 const Movie = ({ src, rating, title, movie }: MovieProps) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const isMobile = useIsMobile()
   const { mode } = useSelector((state: RootState) => state.settings)
 
   const navigateToView = () => {
@@ -41,7 +39,7 @@ const Movie = ({ src, rating, title, movie }: MovieProps) => {
   }
 
   return (
-    <Styles onClick={navigateToView} isMobile={isMobile} mode={mode}>
+    <Styles onClick={navigateToView} mode={mode}>
       <div className="Movie">
         <div className="Movie__image-container">
           <Image
