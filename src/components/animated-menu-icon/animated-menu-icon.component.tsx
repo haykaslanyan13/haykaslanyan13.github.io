@@ -10,6 +10,8 @@ interface MenuIconProps {
   color?: string
 }
 
+
+
 const MenuIcon = ({ toggle, toggled, direction, ...props }: MenuIconProps) => {
   return (
     <Fade toggled={toggled} toggle={toggle} direction={direction} {...props} />
