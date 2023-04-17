@@ -49,7 +49,8 @@ const SearchMovie = () => {
             <DataPagination
               page={page}
               onPage={onPage}
-              total={data.total_pages}
+              perPage={20}
+              total={data.total_pages * 20}
             />
           </div>
         ) : (
